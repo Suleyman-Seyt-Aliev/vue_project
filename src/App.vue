@@ -35,6 +35,12 @@
         <v-icon>mdi-menu</v-icon>
       </v-app-bar-nav-icon>
 
+      <!-- 🏠 Кнопка Home -->
+      <v-btn to="/" text class="ml-2">
+        <v-icon start>mdi-home</v-icon>
+        Home
+      </v-btn>
+
       <v-spacer></v-spacer>
 
       <!-- 🔗 Динамические кнопки -->
