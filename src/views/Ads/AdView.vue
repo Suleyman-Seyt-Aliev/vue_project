@@ -20,9 +20,7 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="warning" variant="flat" @click="onEdit">
-                EDIT
-              </v-btn>
+              <modal-dialog :ad="ad" v-if="isOwner" />
               <v-btn color="success" variant="flat" @click="onBuy">
                 BUY
               </v-btn>
@@ -42,19 +40,25 @@
 </template>
 
 <script>
+import EditAdModal from './EditAdModal.vue'
 export default {
   name: "AdView",
   props: ['id'],
   computed: {
     ad() {
       return this.$store.getters.adById(this.id);
+    },
+    user() {
+      return this.$store.getters.user;
+    },
+    isOwner() {
+      return this.ad && this.user && this.ad.userId === this.user.id;
     }
   },
+  components: {
+    'modal-dialog': EditAdModal
+  },
   methods: {
-    onEdit() {
-      // редирект на страницу редактирования (если есть)
-      this.$router.push({ name: 'ad-edit', params: { id: this.ad.id } });
-    },
     onBuy() {
       // здесь будет логика покупки
       console.log('Buying ad', this.ad.id);
