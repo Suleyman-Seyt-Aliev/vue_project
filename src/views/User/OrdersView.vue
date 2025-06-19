@@ -46,32 +46,10 @@
 <script>
 export default {
   name: 'OrdersView',
-  data() {
-    return {
-      orders: [
-        {
-          id: "123",
-          name: "Kostya",
-          phone: "+7(978)000-00-05",
-          adId: "1",
-          done: true
-        },
-        {
-          id: "124",
-          name: "Ivan",
-          phone: "+7(979)000-00-06",
-          adId: "2",
-          done: false
-        },
-        {
-          id: "125",
-          name: "Alex",
-          phone: "+7(980)000-00-07",
-          adId: "3",
-          done: false
-        }
-      ]
-    };
+  computed: {
+    orders() {
+      return this.$store.getters.orders
+    }
   },
   methods: {
     markDone(order) {
