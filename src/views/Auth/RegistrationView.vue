@@ -91,7 +91,7 @@ export default {
           email: this.email,
           password: this.password
         }
-        console.log("Данные пользователя:", user)
+        this.$store.dispatch('registerUser', user)
       }
     }
   }
