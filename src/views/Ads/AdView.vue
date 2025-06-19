@@ -21,9 +21,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <modal-dialog :ad="ad" v-if="isOwner" />
-              <v-btn color="success" variant="flat" @click="onBuy">
-                BUY
-              </v-btn>
+              <buy-ad-modal :ad="ad" v-else />
             </v-card-actions>
           </template>
 
@@ -41,6 +39,7 @@
 
 <script>
 import EditAdModal from './EditAdModal.vue'
+import BuyAdModal from './BuyAdModal.vue'
 export default {
   name: "AdView",
   props: ['id'],
@@ -56,7 +55,8 @@ export default {
     }
   },
   components: {
-    'modal-dialog': EditAdModal
+    'modal-dialog': EditAdModal,
+    'buy-ad-modal': BuyAdModal
   },
   methods: {
     onBuy() {
